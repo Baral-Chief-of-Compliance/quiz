@@ -18,6 +18,6 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('questionnaires/', include('questionnaireApp.urls')),
+    path('api/v1/questionnaires/', include('questionnaireApp.urls')),
     path('admin/', admin.site.urls),
 ]

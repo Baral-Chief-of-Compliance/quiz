@@ -1,0 +1,19 @@
+version: '3.7'
+services:
+  django_app:
+    build: './backend'
+    restart: always
+    volumes: 
+      - ./backend/questionnaireProject/:/home/questionnaireProject
+    
+    ports:
+      - 8000:8000
+  
+  nginx_back:
+    build: './nginx-back'
+    restart: always
+    ports:
+      - 80:80
+
+    volumes:
+      - ./backend/:/home/app/djangoApp
