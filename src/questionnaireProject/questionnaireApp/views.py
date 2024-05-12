@@ -19,7 +19,7 @@ def getQuiz(request, quiz_url: str) -> JsonResponse:
 
     questions_info = []
 
-    for q in questions:
+    for index, q in enumerate(questions):
        
         choises_info = []
 
@@ -33,9 +33,15 @@ def getQuiz(request, quiz_url: str) -> JsonResponse:
             })
             
         questions_info.append({
-           "q_title": q.q_title
+            "q_id": q.id,
+            "q_index": index + 1,
+            "q_title": q.q_title,
+            "q_choises": choises_info
        }) 
 
     return JsonResponse({
-        "Hello": "world"
+        "quiz_id": quiz.id,
+        "quiz_title": quiz.quiz_title,
+        "quiz_questions_quantity": len(questions),
+        "quiz_questions": questions_info
     })
