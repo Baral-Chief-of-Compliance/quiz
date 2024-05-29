@@ -26,10 +26,28 @@ SECRET_KEY = 'django-insecure-)@t5mpmpeuygp$f4fp9wim!yj=cww^^0sx82d!l23l7qwf2%_@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
-
-
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_METHODS = [
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
+]
+CORS_ALLOW_HEADERS = [
+    "accept",
+    "accept-encoding",
+    "authorization",
+    "content-type",
+    "dnt",
+    "origin",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
+    "cache-control",
+    "pragma",
+]
 
 
 # Application definition
@@ -43,7 +61,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     #наши модули
-    'questionnaireApp'
+    'questionnaireApp',
+
+    #настройка CORS
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
