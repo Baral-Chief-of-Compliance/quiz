@@ -1,4 +1,4 @@
-FROM nginx:alpine
+FROM mirror.gcr.io/library/nginx:alpine
 
 RUN mkdir -p /home/app/djangoApp
 RUN mkdir -p /home/app/frontend
