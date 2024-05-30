@@ -17,4 +17,4 @@ services:
 
     volumes:
       - ./backend/:/home/app/djangoApp
-      - ./frontend/quiz-project/dist/spa/:/home/app/frontend
+      - ./frontend/dist/spa/:/home/app/frontend
