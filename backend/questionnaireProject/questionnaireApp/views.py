@@ -116,6 +116,9 @@ def statisticQuiz(request, quiz_url: str):
 
         questions_info = []
 
+        # количество людей прошедших опрос
+        quiz_count_user_pass = 0
+
         for q in questions:
 
             #получение всех вариантов ответа по данному вопросу
@@ -123,10 +126,12 @@ def statisticQuiz(request, quiz_url: str):
 
             choises = q.q_choises.all()
 
-            
-
+            # количестов людей прошедших вопрос
+            q_count_user_pass = 0
             for c in choises:
                 answers = Answer.objects.filter(quiz=quiz) & Answer.objects.filter(question=q) & Answer.objects.filter(choise=c)
+
+                q_count_user_pass += len(answers)
 
                 choises_info.append({
                     "ch_id": c.id,
@@ -136,17 +141,22 @@ def statisticQuiz(request, quiz_url: str):
                 })
 
             
+            if q_count_user_pass > quiz_count_user_pass:
+                quiz_count_user_pass = q_count_user_pass
 
             questions_info.append({
                 "q_id": q.id,
                 "q_title": q.q_title,
-                "q_choises": choises_info
+                "q_count_user_pass": q_count_user_pass,
+                "q_choises": choises_info,
+
             })
 
         return JsonResponse({
             "quiz_id": quiz.id,
             "quiz_title": quiz.quiz_title,
             "quiz_questions_quantity": len(questions),
+            "quiz_count_user_pass": quiz_count_user_pass,
             "quiz_questions": questions_info,
         })
 
