@@ -58,6 +58,7 @@ def getQuiz(request, quiz_url: str) -> JsonResponse:
             "quiz_id": quiz.id,
             "quiz_title": quiz.quiz_title,
             "quiz_questions_quantity": len(questions),
+            "quiz_title_subtitle": quiz.quiz_title_subtitle,
             "quiz_questions": questions_info,
             "user_token": secrets.token_hex(32),
             "user_questions": user_questions
@@ -156,7 +157,6 @@ def statisticQuiz(request, quiz_url: str):
             "quiz_id": quiz.id,
             "quiz_title": quiz.quiz_title,
             "quiz_questions_quantity": len(questions),
-            "quiz_title_subtitle": quiz.quiz_title_subtitle,
             "quiz_count_user_pass": quiz_count_user_pass,
             "quiz_questions": questions_info,
         })
