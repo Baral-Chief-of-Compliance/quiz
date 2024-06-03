@@ -24,11 +24,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-)@t5mpmpeuygp$f4fp9wim!yj=cww^^0sx82d!l23l7qwf2%_@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True #для разработки
+DEBUG = False #для релиза
 ALLOWED_HOSTS = ['*']
-# CSRF_TRUSTED_ORIGINS = [
-#     'https://*.quiz51.site'
-# ]
+CSRF_TRUSTED_ORIGINS = [
+    'https://*.quiz51.site'
+] #для релиза
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_METHODS = [
